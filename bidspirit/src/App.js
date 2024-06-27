@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import UpcomingPage from './components/UpcomingPage';
 import ProductDetail from './components/ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
+import About from './components/About'; // Import the About component
 import './App.css';
 
 function App() {
@@ -14,13 +15,13 @@ function App() {
 
   useEffect(() => {
     const fetchAuctions = async () => {
-        try {
-            const response = await fetch('UpcomingAuction.json');
-            const data = await response.json();
-            setAuctions(data);
-        } catch (error) {
-            console.error('Error fetching auctions data:', error);
-        }
+      try {
+        const response = await fetch('UpcomingAuction.json');
+        const data = await response.json();
+        setAuctions(data);
+      } catch (error) {
+        console.error('Error fetching auctions data:', error);
+      }
     };
 
     fetchAuctions();
@@ -86,6 +87,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/upcoming" element={<UpcomingPage auctions={auctions} />} />
           <Route path="/product/:id" element={<ProductDetail auctions={auctions} />} />
+          <Route path="/about" element={<About />} /> 
         </Routes>
       </section>
       <Footer />
