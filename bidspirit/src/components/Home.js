@@ -1,22 +1,21 @@
 import React from 'react';
 import SlideShow from './SlideShow';
-import Breadcrumb from './Breadcrumb';
 import UpcomingAuction from './UpcomingAuction';
 import PrivateSales from './PrivateSales';
 import Antique from './Antique';
 import Furniture from './Furniture';
 import Collectibles from './Collectibles';
 
-function Home() {
+function Home({ auctions, privateSale, antiQue, furniTure, collecTible  }) {
   return (
     <div>
-      <Breadcrumb/>
+      {/* <Breadcrumb/> */}
       <SlideShow />
-      <UpcomingAuction/>
-      <PrivateSales/>
-      <Antique/>
-      <Furniture/>
-      <Collectibles/>
+      <UpcomingAuction auctions={auctions} />
+      <PrivateSales privateSale={privateSale}/>
+      <Antique antiQue={antiQue}/>
+      <Furniture furniTure={furniTure}/>
+      <Collectibles collecTible={collecTible}/>
     </div>
   );
 }

@@ -1,0 +1,41 @@
+.cart-container{
+    margin: 0 auto;
+    border-collapse: collapse; /* Để border không bị chồng lên nhau */
+}
+.cart-container  th, .cart-container td {
+    border: 1px solid black; 
+    padding: 8px;
+    text-align: left;
+}
+  
+.cart-container  th {
+    background-color: #656565; 
+}
+  
+.cart-container tr {
+    border: 1px solid black; 
+    color: white;
+}
+  .btn-oder{   
+    width: 150px;
+    padding: 18px 16px;
+    background-color: rgb(70, 70, 255) ;
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+.customer-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.customer-info input {
+    width: 80%; 
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 20px 0;
+}  

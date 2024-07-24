@@ -32,13 +32,16 @@
     border-radius: 12px;
 }
 .product-menu button{
+    background-color: #0091ff;
     color: white;
-    border: 1px solid white;
+    border: none;
     padding: 14px 20px;
     cursor: pointer;
     border-radius: 5px;
     font-weight: 550;
-    background-color: transparent;
+}
+.product-menu button:hover{
+    background-color: #0091ff;
 }
 .product-item{
     position: relative;
@@ -60,3 +63,13 @@
     border-radius: 10px;
     border: none;
 }  
+.search-input {
+    width: 50%;
+    height: 25px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-left: 5%;
+    border-radius: 7px;
+}

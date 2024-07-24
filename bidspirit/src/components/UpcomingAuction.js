@@ -1,28 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/UpcomingAuction.css';
 
-const UpcomingAuction = () => {
-    const [auctions, setAuctions] = useState([]);
+const UpcomingAuction = ({auctions}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const auctionListRef = useRef(null);
     const itemWidth = 295;
     const [showButton, setShowButton] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchAuctions = async () => {
-            try {
-                const response = await fetch('UpcomingAuction.json');
-                const data = await response.json();
-                setAuctions(data);
-            } catch (error) {
-                console.error('Error fetching auctions data:', error);
-            }
-        };
-
-        fetchAuctions();
-    }, []);
 
     const calculateTransformValue = () => {
         if (auctionListRef.current && auctions.length > 0) {
@@ -44,10 +30,11 @@ const UpcomingAuction = () => {
 
     const handleViewMore = (id) => {
         navigate(`/product/${id}`);
-    };
+        console.log("id")
+    };  
 
     const handleViewCategory = () => {
-        navigate('/upcoming');
+        navigate('/productmenu?type=auctions');
     };
 
     return (
@@ -59,16 +46,19 @@ const UpcomingAuction = () => {
             <div className="auction-list-wrapper" ref={auctionListRef}>
                 <div className="auction-list" style={{ transform: `translateX(-${calculateTransformValue()}px)` }}>
                     {auctions.map((auction, index) => (
-                        <div key={index} className={`auction-item ${index === currentIndex ? 'active' : ''}`}
+                        <div 
+                            key={index} 
+                            className={`auction-item ${index === currentIndex ? 'active' : ''}`}
                             onMouseEnter={() => setShowButton(true)}
                             onMouseLeave={() => setShowButton(false)}
-                            onClick={() => handleViewMore(auction.id)}>
+                            onClick={() => handleViewMore(auction.id)}
+                        >
                             <img src={auction.img} alt={auction.name} />
                             <h3>{auction.name}</h3>
                             <p>{auction.time}</p>
                             <p>{auction.description}</p>
                             {showButton && (
-                                <button className="view-more-button" onClick={() => handleViewMore(auction.id)}>View</button>
+                                <button className="view-more-button" onClick={() => handleViewMore(auction.id)}>View More</button>
                             )}
                         </div>
                     ))}

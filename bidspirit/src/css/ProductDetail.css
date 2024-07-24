@@ -1,9 +1,8 @@
+h1{
+    color: white;
+}
 .product-detail-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+    margin-left: 13%;
 }
 
 .product-detail {
@@ -12,3 +11,66 @@
     width: 100%;
     color: white;
 }
+/*  */
+.product-detail {
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+.large-image {
+    width: 500px;
+    height: 492px;
+    object-fit: cover;
+}
+
+.thumbnails {
+    height: 500px;
+}
+
+.thumbnail {
+    width: 95px;
+    height: 95px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.content-detail{
+    width: 500px;
+}
+.description-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#description {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center; 
+    margin-top: 20px;
+    color: white;
+}
+.content-detail button{
+    background-color: #0091ff;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 550;
+}
+.content-detail button:hover{
+    background-color: #0091ffa0;
+}
+

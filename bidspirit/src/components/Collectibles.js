@@ -1,31 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import '../css/UpcomingAuction.css';
+import { useNavigate } from 'react-router-dom';
 
-const Collectibles = () => {
-    const [auctions, setAuctions] = useState([]);
+const Collectibles = ({collecTible}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const auctionListRef = useRef(null);
     const itemWidth = 295;
     const [showButton, setShowButton] = useState(false);
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchAuctions = async () => {
-            try {
-                const response = await fetch('Collectibles.json');
-                const data = await response.json();
-                setAuctions(data);
-            } catch (error) {
-                console.error('Error fetching auctions data:', error);
-            }
-        };
-
-        fetchAuctions();
-    }, []);
 
     const calculateTransformValue = () => {
-        if (auctionListRef.current && auctions.length > 0) {
+        if (auctionListRef.current && collecTible.length > 0) {
             const visibleItems = Math.floor(auctionListRef.current.offsetWidth / itemWidth);
-            const maxTranslateX = (auctions.length - visibleItems) * itemWidth;
+            const maxTranslateX = (collecTible.length - visibleItems) * itemWidth;
             const translateX = currentIndex * itemWidth;
             return Math.min(translateX, maxTranslateX);
         }
@@ -33,36 +21,38 @@ const Collectibles = () => {
     };
 
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === auctions.length - 1 ? 0 : prevIndex + 1));
+        setCurrentIndex((prevIndex) => (prevIndex === collecTible.length - 1 ? 0 : prevIndex + 1));
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? auctions.length - 1 : prevIndex - 1));
+        setCurrentIndex((prevIndex) => (prevIndex === 0 ? collecTible.length - 1 : prevIndex - 1));
     };
 
-    const handleViewMore = () => {
-        // Add functionality for the "View More" button if needed
-        console.log('View More clicked');
+    const handleViewMore = (id) => {
+        navigate(`/product/${id}`);
     };
-
+    const handleViewCategory = () => {
+        navigate('/productmenu?type=collectibles');
+    };
     return (
         <div className="auction-carousel">
             <div className="header">
                 <h1>Collectibles</h1>
-                <button className="view-category-btn">View Category</button>
+                <button className="view-category-btn" onClick={handleViewCategory}>View Category</button>
             </div>
             <div className="auction-list-wrapper" ref={auctionListRef}>
                 <div className="auction-list" style={{ transform: `translateX(-${calculateTransformValue()}px)` }}>
-                    {auctions.map((auction, index) => (
+                    {collecTible.map((auction, index) => (
                         <div key={index} className={`auction-item ${index === currentIndex ? 'active' : ''}`}
                             onMouseEnter={() => setShowButton(true)}
-                            onMouseLeave={() => setShowButton(false)}>
+                            onMouseLeave={() => setShowButton(false)}
+                            onClick={() => handleViewMore(auction.id)}>
                             <img src={auction.img} alt={auction.name} />
                             <h3>{auction.name}</h3>
                             <p>{auction.time}</p>
                             <p>{auction.description}</p>
                             {showButton && (
-                                <button className="view-more-button" onClick={handleViewMore}>View More</button>
+                                <button className="view-more-button" onClick={() => handleViewMore(auction.id)}>View More</button>
                             )}
                         </div>
                     ))}
