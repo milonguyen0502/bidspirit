@@ -62,27 +62,33 @@ const ProductDetail = ({ privateSale, auctions, antiQue, collecTible, furniTure,
                     </div>    
                 </div>
             </div>
-            <h1>Lot Details</h1>
-            <div>
-                <button onClick={toggleDescription} className="description-toggle">
-                    <i className={`fa ${showDescription ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
-                </button>
-                {showDescription && (
-                    <div id="description">
-                        <p>{auction.description}</p>
-                    </div>
-                )}
+            <div className="lot-details">
+                <h1>Lot Details</h1>
+                <div className='toganddetail'>
+                    <button onClick={toggleDescription} className="description-toggle">
+                        <i className={`fa ${showDescription ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+                    </button>
+                    {showDescription && (
+                        <div id="description">
+                            <h3>Description</h3>
+                            <p>{auction.description}</p>
+                        </div>
+                    )}
+                </div>
+                <div className='toganddetail'>
+                    <button onClick={toggleDetail} className="description-toggle">
+                        <i className={`fa ${showDetail ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
+                    </button>
+                    {showDetail && (
+                        <div id="description">
+                            <h3>Information</h3>
+                            <p>{auction.detail}</p>
+                        </div>
+                    )}
+                </div>
+                
             </div>
-            <div>
-                <button onClick={toggleDetail} className="description-toggle">
-                    <i className={`fa ${showDetail ? 'fa-caret-up' : 'fa-caret-down'}`} aria-hidden="true"></i>
-                </button>
-                {showDetail && (
-                    <div id="description">
-                        <p>{auction.detail}</p>
-                    </div>
-                )}
-            </div>
+
         </div>
     );
 };

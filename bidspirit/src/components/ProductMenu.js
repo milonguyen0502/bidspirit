@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/UpcomingPage.css';
 import SlideShow from "./SlideShow";
 
-
 function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible }) {
     const location = useLocation();
     const navigate = useNavigate();
@@ -17,11 +16,14 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
         categories: [],
         sales: []
     });
+    const [showMoreLocations, setShowMoreLocations] = useState(false); 
+    const [showMoreExhibitions, setShowMoreExhibitions] = useState(false); 
+    const [showMoreCategories, setShowMoreCategories] = useState(false); 
+    const [showMoreSales, setShowMoreSales] = useState(false); 
     const [searchTerm, setSearchTerm] = useState('');
     const [pageTitle, setPageTitle] = useState('Upcoming Auction');
 
     useEffect(() => {
-        // Set initial list based on URL parameter
         const searchParams = new URLSearchParams(location.search);
         const type = searchParams.get('type');
 
@@ -69,10 +71,7 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
     };
 
     const applyFilters = () => {
-        // Logic to filter currentList based on filters
         console.log('Filters applied:', filters);
-        // Implement your logic to filter currentList based on filters
-        // Update the currentList state with the filtered results
     };
 
     const navigateToProductDetail = (product) => {
@@ -86,6 +85,94 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
     const filteredList = currentList.filter(item =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const renderLocationCheckboxes = () => {
+        const locations = [
+            'New York', 'London', 'Paris', 'Tokyo', 'Hong Kong'
+        ];
+        return locations.map((location, index) => {
+            if (!showMoreLocations && index >= 2) return null;
+            return (
+                <div key={location}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name={location}
+                            checked={filters.locations.includes(location)}
+                            onChange={handleCheckboxChange}
+                        />
+                        {location}
+                    </label>
+                </div>
+            );
+        });
+    };
+
+    const renderExhibitionCheckboxes = () => {
+        const exhibitions = [
+            'Exhibition 1', 'Exhibition 2', 'Exhibition 3', 'Exhibition 4', 'Exhibition 5'
+        ];
+        return exhibitions.map((exhibition, index) => {
+            if (!showMoreExhibitions && index >= 2) return null;
+            return (
+                <div key={exhibition}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name={exhibition}
+                            checked={filters.exhibitions.includes(exhibition)}
+                            onChange={handleCheckboxChange}
+                        />
+                        {exhibition}
+                    </label>
+                </div>
+            );
+        });
+    };
+
+    const renderCategoryCheckboxes = () => {
+        const categories = [
+            'Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'
+        ];
+        return categories.map((category, index) => {
+            if (!showMoreCategories && index >= 2) return null;
+            return (
+                <div key={category}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name={category}
+                            checked={filters.categories.includes(category)}
+                            onChange={handleCheckboxChange}
+                        />
+                        {category}
+                    </label>
+                </div>
+            );
+        });
+    };
+
+    const renderSaleTypeCheckboxes = () => {
+        const sales = [
+            'Sale 1', 'Sale 2', 'Sale 3', 'Sale 4', 'Sale 5'
+        ];
+        return sales.map((sale, index) => {
+            if (!showMoreSales && index >= 2) return null;
+            return (
+                <div key={sale}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name={sale}
+                            checked={filters.sales.includes(sale)}
+                            onChange={handleCheckboxChange}
+                        />
+                        {sale}
+                    </label>
+                </div>
+            );
+        });
+    };
 
     return (
         <div>
@@ -116,28 +203,40 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
                     <input type="date" name="dateTo" value={filters.dateTo} onChange={handleFilterChange} />
                     <hr />
                     <h4>Location</h4>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="NewYork" checked={filters.locations.includes('NewYork')} onChange={handleCheckboxChange} />
-                            New York
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" name="London" checked={filters.locations.includes('London')} onChange={handleCheckboxChange} />
-                            London
-                        </label>
-                    </div>
-                    {/* Add more location checkboxes as needed */}
+                    {renderLocationCheckboxes()}
+                    {!showMoreLocations && (
+                        <button className="show-more-button" onClick={() => setShowMoreLocations(true)}>Show More</button>
+                    )}
+                    {showMoreLocations && (
+                        <button className="show-less-button" onClick={() => setShowMoreLocations(false)}>Show Less</button>
+                    )}
                     <hr />
                     <h4>Exhibition</h4>
-                    {/* Exhibition filter checkboxes */}
+                    {renderExhibitionCheckboxes()}
+                    {!showMoreExhibitions && (
+                        <button className="show-more-button" onClick={() => setShowMoreExhibitions(true)}>Show More</button>
+                    )}
+                    {showMoreExhibitions && (
+                        <button className="show-less-button" onClick={() => setShowMoreExhibitions(false)}>Show Less</button>
+                    )}
                     <hr />
                     <h4>Categories</h4>
-                    {/* Categories filter checkboxes */}
+                    {renderCategoryCheckboxes()}
+                    {!showMoreCategories && (
+                        <button className="show-more-button" onClick={() => setShowMoreCategories(true)}>Show More</button>
+                    )}
+                    {showMoreCategories && (
+                        <button className="show-less-button" onClick={() => setShowMoreCategories(false)}>Show Less</button>
+                    )}
                     <hr />
                     <h4>Sale Type</h4>
-                    {/* Sale type filter checkboxes */}
+                    {renderSaleTypeCheckboxes()}
+                    {!showMoreSales && (
+                        <button className="show-more-button" onClick={() => setShowMoreSales(true)}>Show More</button>
+                    )}
+                    {showMoreSales && (
+                        <button className="show-less-button" onClick={() => setShowMoreSales(false)}>Show Less</button>
+                    )}
                     <hr />
                     <button onClick={applyFilters}>APPLY FILTERS</button>
                 </div>
@@ -149,7 +248,7 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
                         onChange={handleSearchInputChange}
                         className="search-input"
                     />
-                <div className="product-menu">
+                     <div className="product-menu">
                     {filteredList.map((item, index) => (
                         <div key={index} className="product-item" onClick={() => navigateToProductDetail(item)}>
                             <img src={item.img} alt={item.name} />
@@ -162,7 +261,6 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
                     ))}
                 </div>
                 </div>
-        
             </div>
         </div>
     );

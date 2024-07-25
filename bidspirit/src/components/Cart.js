@@ -1,74 +1,59 @@
+import React from 'react';
 import '../css/cart.css';
 
-function Cart({ cart, handleDetele }) {
+function Cart({ cart, handleDelete }) {
   const totalPrice = cart.reduce((total, product) => total + product.price, 0);
 
   return (
-    <div>
-      <h1 style={{ textAlign: "center", color: "white"}}>
-      Your Cart
-      </h1>
-      <div>
-        {cart.length === 0 ? (
-          <p style={{ textAlign: "center" }}>Giỏ hàng trống</p>
-        ) : (
-          <table className="cart-container">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Product</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((pro, index) => (
-                <tr key={index}>
-                  <td>{pro.name}</td>
-                  <td><h3>{pro.price}$</h3></td>
-                  <td>
-                    <img src={pro.img} alt="hinh san pham" width="350px" height="200px" style={{objectFit:"cover"}} />
-                  </td>
-                  <td>
-                    <button
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleDetele(index)}
-                    >
-                      <i className="fa fa-trash" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-              ))}
-               <tr>
-                <td colSpan="3" style={{ textAlign: "left" }}>
-                  <h4>Total:</h4>
-                </td>
-                <td>
-                  <h4>{totalPrice}$</h4>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="4">
-                  <h5>Your information:</h5>
-                  <div>
-                    <input type="radio" name="gender" />Male
-                    <input type="radio" name="gender" />Female
+    <div className="cart-page">
+      <h1>Your Bag</h1>
+      {cart.length === 0 ? (
+        <p className="text-center">Your cart is empty</p>
+      ) : (
+        <div className="cart-container">
+          <div className="cart-items">
+            {cart.map((product, index) => (
+              <div key={index} className="cart-item">
+                <img src={product.img} alt="Product" />
+                <div className="cart-item-details">
+                  <h3>{product.name}</h3>
+                  <p className="sku">SKU: {product.sku}</p>
+                  <p className="final-sale">Final Sale</p>
+                  <div className="shipping-info">
+                    <i className="fa fa-truck" aria-hidden="true"></i>
+                    <p>This item is eligible for international shipping.</p>
                   </div>
-                  <div className="customer-info">
-                    <input placeholder="Your name" />
-                    <input placeholder="Your phone" />
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td colSpan="4" style={{ textAlign: "center" }}>
-                  <button className="btn-oder">Payment Method</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        )}
-      </div>
+                  <p>Qty: 1</p>
+                  <button className="delete-btn" onClick={() => handleDelete(index)}>
+                    <i className="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                  <p className="price">{product.price} USD</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="cart-summary">
+            <h2>Order Summary</h2>
+            <div className="summary-item">
+              <span>Subtotal ({cart.length} item{cart.length > 1 ? 's' : ''})</span>
+              <span>{totalPrice} USD</span>
+            </div>
+            <div className="summary-item">
+              <span>Shipping</span>
+              <span>-</span>
+            </div>
+            <div className="summary-item">
+              <span>Taxes</span>
+              <span>-</span>
+            </div>
+            <div className="summary-item total">
+              <span>Total</span>
+              <span>{totalPrice} USD</span>
+            </div>
+            <button className="btn-order">Log in to Checkout</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
