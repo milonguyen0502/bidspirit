@@ -145,11 +145,11 @@ function App() {
     const handleAddcart = (pro) => {
       setCart([...cart, pro]);
     }
-    const handleDetele = (index) => {
-      const newCart = [...cart];
-      newCart.splice(index, 1);
-      setCart(newCart); 
-    }
+    const handleDelete = (index) => {
+        const newCart = [...cart];
+        newCart.splice(index, 1);
+        setCart(newCart); 
+    };
     return (
         <div className="App">
             <ScrollToTop />
@@ -222,7 +222,7 @@ function App() {
                 <Route path="/product/:id" element={<ProductDetail auctions={auctions} privateSale={privateSale} antiQue={antique} furniTure={furniture} collecTible={collectible} handleAddcart={handleAddcart} />} />
                 <Route path="/productmenu" element={<ProductMenu auctions={auctions} privateSale={privateSale} antiQue={antique} furniTure={furniture} collecTible={collectible} />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/cart" element={<Cart cart={cart}  handleDetele={handleDetele}/>} />
+                <Route path="/cart" element={<Cart cart={cart} handleDelete={handleDelete} />} />
                 <Route path="/login" element={<Login checkLogin={checkLogin} />} />
                 <Route path="/signup" element={<Signup handleSignup={handleSignup} />} />
                 <Route path="/editpassword" element={<EditPass handleEditPass={handleEditPass} />} />

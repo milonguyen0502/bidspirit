@@ -6,7 +6,7 @@ function Cart({ cart, handleDelete }) {
 
   return (
     <div className="cart-page">
-      <h1>Your Bag</h1>
+      <h1>Your Cart</h1>
       {cart.length === 0 ? (
         <p className="text-center">Your cart is empty</p>
       ) : (
