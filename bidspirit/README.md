@@ -68,3 +68,33 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+bidspirit
+eProject-2024 Batch no: T3.2403.M1
+
+Project title: BIDSPIRIT
+
+========> Group 01 <=========
+
+4 collaborators:
+
+Student1559425 NGUYEN MINH LONG
+
+Student1559428 DUONG NGUYEN AN KHANG
+
+Student1559451 NGUYEN HOANG DUONG
+
+Student1559442 TRAN ANH GIA BAO
+
+============================
+
+eProject documentation at https://github.com/huongvu03/kitchen_appliances/tree/main/document
+
+============================
+
+============================
+
+eProject video at https://drive.google.com/file/d/1sAWiL4VoEguSn50yj5dwTyrm-KHrXCy4/view?usp=sharing
+
+============================
+
+Thank you for spending your time to look at our work.
