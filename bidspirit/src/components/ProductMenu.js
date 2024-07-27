@@ -110,7 +110,7 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
 
     const renderExhibitionCheckboxes = () => {
         const exhibitions = [
-            'Exhibition 1', 'Exhibition 2', 'Exhibition 3', 'Exhibition 4', 'Exhibition 5'
+             'New York', 'London', 'Paris', 'Tokyo', 'Hong Kong'
         ];
         return exhibitions.map((exhibition, index) => {
             if (!showMoreExhibitions && index >= 2) return null;
@@ -132,7 +132,7 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
 
     const renderCategoryCheckboxes = () => {
         const categories = [
-            'Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'
+            'Contemporary Art', 'Impressionist & Modern Art', 'Jewelry', 'Watches', 'Wine', '19th Century European Paintings'
         ];
         return categories.map((category, index) => {
             if (!showMoreCategories && index >= 2) return null;
@@ -154,7 +154,7 @@ function ProductMenu({ auctions, privateSale, antiQue, furniTure, collecTible })
 
     const renderSaleTypeCheckboxes = () => {
         const sales = [
-            'Sale 1', 'Sale 2', 'Sale 3', 'Sale 4', 'Sale 5'
+            'Exhibition', 'Live', 'Online Only'
         ];
         return sales.map((sale, index) => {
             if (!showMoreSales && index >= 2) return null;

@@ -14,6 +14,7 @@ import EditPass from './components/EditPass';
 import PersonalPage from './components/PersonalPage';
 import Wallet from './components/Wallet';
 import './App.css';
+import BackToTop from './components/BackToTop';
 
 function App() {
     const [language, setLanguage] = useState('EN');
@@ -230,6 +231,7 @@ function App() {
                 <Route path="/wallet" element={<Wallet />} />
             </Routes>
             <Footer />
+            <BackToTop/>
         </div>
     );
 }
