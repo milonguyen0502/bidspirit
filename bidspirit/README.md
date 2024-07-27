@@ -93,7 +93,7 @@ eProject documentation at https://github.com/huongvu03/kitchen_appliances/tree/m
 
 ============================
 
-eProject video at https://drive.google.com/file/d/1sAWiL4VoEguSn50yj5dwTyrm-KHrXCy4/view?usp=sharing
+eProject video at https://drive.google.com/drive/u/0/folders/1f556wAOypzEUs2lTZmLBBd0xUKUjPQnj
 
 ============================
 
