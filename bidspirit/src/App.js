@@ -191,7 +191,7 @@ function App() {
                     {username ? (
     <div className="dropdown-user">
         <button onClick={() => setShowUserMenu(!showUserMenu)}>
-            <i className="fa fa-user-circle-o" aria-hidden="true"></i>
+            <i className="fa fa-user-circle-o" aria-hidden="true"></i>  
         </button>
         {showUserMenu && (
             <div className="dropdown-content">
