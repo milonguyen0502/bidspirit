@@ -1,4 +1,3 @@
-// components/EditPass.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/editpass.css';
@@ -24,7 +23,7 @@ function EditPass({ handleEditPass }) {
 
     return (
         <div>
-            <h1 style={{ textAlign: 'center', color: 'white' }}>Reset your password</h1>
+            <h1>Reset your password</h1>
             <form onSubmit={handleSubmit}>
                 <table className="editpass">
                     <tbody>

@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import ProductMenu from './components/ProductMenu';
 import ProductDetail from './components/ProductDetail';
 import ScrollToTop from './components/ScrollToTop';
-import About from './components/About';
+import About from './components/AboutUs';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -14,6 +14,7 @@ import EditPass from './components/EditPass';
 import PersonalPage from './components/PersonalPage';
 import Wallet from './components/Wallet';
 import './App.css';
+import BackToTop from './components/BackToTop';
 
 function App() {
     const [language, setLanguage] = useState('EN');
@@ -230,6 +231,7 @@ function App() {
                 <Route path="/wallet" element={<Wallet />} />
             </Routes>
             <Footer />
+            <BackToTop/>
         </div>
     );
 }
